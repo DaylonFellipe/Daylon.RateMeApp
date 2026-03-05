@@ -22,7 +22,7 @@ namespace Daylon.RateMeApp.Infrastructure
         {
             var connectionString = configuration.GetConnectionString("SqlServerConnection");
 
-            if (!string.IsNullOrEmpty(connectionString))
+            if (string.IsNullOrEmpty(connectionString))
                 throw new Exception("Connection string is not configured.");
 
             services.AddDbContext<RateMeAppDbContext>(options =>
