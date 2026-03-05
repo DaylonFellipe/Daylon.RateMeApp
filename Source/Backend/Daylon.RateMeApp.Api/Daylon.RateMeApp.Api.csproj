@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Daylon.RateMeApp.Application\Daylon.RateMeApp.Application.csproj" />
+    <ProjectReference Include="..\Daylon.RateMeApp.Infrastructure\Daylon.RateMeApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
