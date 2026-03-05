@@ -1,5 +1,6 @@
 using Daylon.RateMeApp.Application;
 using Daylon.RateMeApp.Infrastructure;
+using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddOpenApi();
 
 // Add Dependency Injection
 builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 //==|=====>
 var app = builder.Build();
