@@ -1,4 +1,6 @@
-﻿using Daylon.RateMeApp.Infrastructure.DataAccess;
+﻿using Daylon.RateMeApp.Domain.Interfaces.Repositories;
+using Daylon.RateMeApp.Infrastructure.DataAccess;
+using Daylon.RateMeApp.Infrastructure.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +17,7 @@ namespace Daylon.RateMeApp.Infrastructure
 
         private static void AddServices(IServiceCollection services)
         {
-            //services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
         }
 
         private static void AddDbContexts(IServiceCollection services, IConfiguration configuration)
