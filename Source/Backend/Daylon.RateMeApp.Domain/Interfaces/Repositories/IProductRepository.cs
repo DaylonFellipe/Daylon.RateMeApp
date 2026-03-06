@@ -1,8 +1,8 @@
 ﻿using Daylon.RateMeApp.Domain.Entity;
 
-namespace Daylon.RateMeApp.Application.Interfaces.Products
+namespace Daylon.RateMeApp.Domain.Interfaces.Repositories
 {
-    public interface IProductService
+    public interface IProductRepository
     {
         Task<IEnumerable<Product>> GetAllProductsAsync();
     }
