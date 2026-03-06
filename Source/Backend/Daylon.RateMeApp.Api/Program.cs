@@ -1,11 +1,11 @@
 using Daylon.RateMeApp.Application;
 using Daylon.RateMeApp.Infrastructure;
+using Scalar.AspNetCore;
 using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -21,6 +21,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
+
+    // Open Scalar
+    var url = "https://localhost:7051/scalar/";
+    try
+    { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+        { FileName = url, UseShellExecute = true });} catch { }
 }
 
 app.UseHttpsRedirection();
