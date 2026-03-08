@@ -1,5 +1,4 @@
-﻿
-using Daylon.RateMeApp.Domain.Entity.Enum;
+﻿using Daylon.RateMeApp.Domain.Entity.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace Daylon.RateMeApp.Domain.Entity
@@ -20,8 +19,8 @@ namespace Daylon.RateMeApp.Domain.Entity
         public string? ImageUrl { get; set; }
 
         // Category/SubCategory
-        public Guid CategoryId { get; set; }
-        public Guid SubCategoryId { get; set; }
+        public ProductCategoryEnum Category { get; set; }
+        public ProductSubCategoryEnum SubCategory { get; set; }
 
         // Supplier
         public SupplierOptionsEnum? SupplierOption { get; set; }
