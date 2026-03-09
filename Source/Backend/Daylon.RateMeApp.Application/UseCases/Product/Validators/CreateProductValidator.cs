@@ -33,7 +33,6 @@ namespace Daylon.RateMeApp.Application.UseCases.Product.Validators
                 .Must(subCategory => Enum.IsDefined(typeof(ProductSubCategoryEnum), subCategory)).WithMessage("Invalid subcategory.");
 
             RuleFor(x => x.SupplierOption)
-                .IsInEnum().WithMessage("Valid Supplier is required")
                 .Must(supplierOption => supplierOption == null ||
                 Enum.IsDefined(typeof(SupplierOptionsEnum), supplierOption)).WithMessage("Invalid supplier option.");
 

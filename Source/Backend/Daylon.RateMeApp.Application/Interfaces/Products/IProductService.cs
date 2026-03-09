@@ -1,4 +1,5 @@
-﻿using Daylon.RateMeApp.Communication.Requests.Product;
+﻿using Daylon.RateMeApp.Application.DTOs.Product;
+using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity;
 
 namespace Daylon.RateMeApp.Application.Interfaces.Products
@@ -9,6 +10,6 @@ namespace Daylon.RateMeApp.Application.Interfaces.Products
         Task<IEnumerable<Product>> GetAllProductsAsync();
 
         // Post
-        Task<Product> CreateProductAsync(RequestCreateProductJson request);
+        Task<ProductDTO> CreateProductAsync(RequestCreateProductJson request);
     }
 }

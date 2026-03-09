@@ -1,6 +1,8 @@
-﻿using Daylon.RateMeApp.Application.Interfaces.Products;
+﻿using Daylon.RateMeApp.Application.DTOs.Product;
+using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity;
+using Daylon.RateMeApp.Domain.Entity.Enum;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
 
 namespace Daylon.RateMeApp.Application.Services.Products
@@ -17,11 +19,34 @@ namespace Daylon.RateMeApp.Application.Services.Products
             return products;
         }
 
-        public async Task<Product> CreateProductAsync(RequestCreateProductJson request)
+        public async Task<ProductDTO> CreateProductAsync(RequestCreateProductJson request)
         {
-            var products = await _productUseCase.ExecuteCreateProductAsync(request);
+            var product = await _productUseCase.ExecuteCreateProductAsync(request);
 
-            return products;
+            var productDTO = new ProductDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = (product.Price ?? 0),
+                Rating = product.Rating ?? 0,
+                Category = product.Category,
+                SubCategory = product.SubCategory,
+                SupplierName = GetSupplierName(product)
+            };
+
+            return productDTO;
+        }
+
+        // Auxiliary Methods
+        private static string GetSupplierName(Product product)
+        {
+            if (product.SupplierOption.HasValue && product.SupplierOption != SupplierOptionsEnum.Indefinite)
+                return product.SupplierOption.Value.ToString();
+
+            if (!string.IsNullOrWhiteSpace(product.SupplierPersonalizedName))
+                return product.SupplierPersonalizedName;
+
+            return "Unknown Supplier";
         }
     }
 }
