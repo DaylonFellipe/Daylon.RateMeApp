@@ -1,4 +1,5 @@
-﻿using Daylon.RateMeApp.Application.Interfaces.Products;
+﻿using Daylon.RateMeApp.Application.DTOs.Product;
+using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity;
 using Microsoft.AspNetCore.Mvc;
@@ -30,9 +31,9 @@ namespace Daylon.RateMeApp.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest("Invalid request data.");
 
-           var product = await _productService.CreateProductAsync(request);
+           var productDTO = await _productService.CreateProductAsync(request);
 
-            return Ok(product);
+            return Ok(productDTO);
         }
     }
 }
