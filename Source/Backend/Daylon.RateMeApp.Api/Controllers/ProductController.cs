@@ -1,4 +1,6 @@
 ﻿using Daylon.RateMeApp.Application.Interfaces.Products;
+using Daylon.RateMeApp.Communication.Requests.Product;
+using Daylon.RateMeApp.Domain.Entity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Daylon.RateMeApp.Api.Controllers
@@ -20,6 +22,17 @@ namespace Daylon.RateMeApp.Api.Controllers
             var products = await _productService.GetAllProductsAsync();
 
             return Ok(products);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] RequestCreateProductJson request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid request data.");
+
+           var product = await _productService.CreateProductAsync(request);
+
+            return Ok(product);
         }
     }
 }
