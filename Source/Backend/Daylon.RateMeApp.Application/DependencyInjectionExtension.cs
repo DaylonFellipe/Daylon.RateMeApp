@@ -1,5 +1,6 @@
 ﻿using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Application.Services.Products;
+using Daylon.RateMeApp.Application.UseCases.Product;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Daylon.RateMeApp.Application
@@ -14,6 +15,7 @@ namespace Daylon.RateMeApp.Application
         private static void AddServices(IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductUseCase, ProductUseCase>();
         }
     }
 }

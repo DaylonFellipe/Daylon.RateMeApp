@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Daylon.RateMeApp.Communication\Daylon.RateMeApp.Communication.csproj" />
     <ProjectReference Include="..\Daylon.RateMeApp.Application\Daylon.RateMeApp.Application.csproj" />
     <ProjectReference Include="..\Daylon.RateMeApp.Infrastructure\Daylon.RateMeApp.Infrastructure.csproj" />
   </ItemGroup>
