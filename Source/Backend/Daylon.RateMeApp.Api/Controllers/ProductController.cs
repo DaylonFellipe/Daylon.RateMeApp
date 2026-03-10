@@ -31,9 +31,20 @@ namespace Daylon.RateMeApp.Api.Controllers
             if (!ModelState.IsValid)
                 return BadRequest("Invalid request data.");
 
-           var productDTO = await _productService.CreateProductAsync(request);
+            var productDTO = await _productService.CreateProductAsync(request);
 
             return Ok(productDTO);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromQuery] Guid id)
+        {
+            var result = await _productService.DeleteProductAsync(id);
+
+            if (!result)
+                return NotFound("Product not found.");
+
+            return NoContent();
         }
     }
 }

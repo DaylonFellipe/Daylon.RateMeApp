@@ -37,6 +37,13 @@ namespace Daylon.RateMeApp.Application.Services.Products
             return productDTO;
         }
 
+        public async Task<bool> DeleteProductAsync(Guid id)
+        {
+            var result = await _productRepository.DeleteProductAsync(id);
+
+            return result;
+        }
+
         // Auxiliary Methods
         private static string GetSupplierName(Product product)
         {
