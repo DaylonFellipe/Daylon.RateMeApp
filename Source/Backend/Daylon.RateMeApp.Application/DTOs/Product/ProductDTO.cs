@@ -1,4 +1,5 @@
 ﻿using Daylon.RateMeApp.Domain.Entity.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace Daylon.RateMeApp.Application.DTOs.Product
 {
@@ -10,6 +11,7 @@ namespace Daylon.RateMeApp.Application.DTOs.Product
         public double Price { get; set; }
 
         // Rating
+        [Range(0, 5, ErrorMessage = "Rating must be between 0 and 5.")]
         public double Rating { get; set; }
 
         // Category/SubCategory

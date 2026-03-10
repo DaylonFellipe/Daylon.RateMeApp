@@ -1,4 +1,5 @@
 ﻿using Daylon.RateMeApp.Domain.Interfaces.Repositories;
+using Daylon.RateMeApp.Exceptions;
 using Daylon.RateMeApp.Infrastructure.DataAccess;
 using Daylon.RateMeApp.Infrastructure.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +26,7 @@ namespace Daylon.RateMeApp.Infrastructure
             var connectionString = configuration.GetConnectionString("SqlServerConnection");
 
             if (string.IsNullOrEmpty(connectionString))
-                throw new Exception("Connection string is not configured.");
+                throw new Exception(ResourceMessagesException.CONNECTION_STRING_UNCONFIGURED);
 
             services.AddDbContext<RateMeAppDbContext>(options =>
                 options.UseSqlServer(connectionString));

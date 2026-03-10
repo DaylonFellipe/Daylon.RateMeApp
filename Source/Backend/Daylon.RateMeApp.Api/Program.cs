@@ -1,7 +1,6 @@
 using Daylon.RateMeApp.Application;
 using Daylon.RateMeApp.Infrastructure;
 using Scalar.AspNetCore;
-using System.Runtime.CompilerServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

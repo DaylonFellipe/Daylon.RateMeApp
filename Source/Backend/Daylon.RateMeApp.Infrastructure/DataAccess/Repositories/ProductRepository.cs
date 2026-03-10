@@ -1,5 +1,6 @@
 ﻿using Daylon.RateMeApp.Domain.Entity;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
+using Daylon.RateMeApp.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
@@ -18,7 +19,7 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
         public async Task<Product?> GetProductByIdAsync(Guid id)
         {
             var product = await _dbContext.Products.FirstOrDefaultAsync(p => p.Id == id);
-            return product ?? throw new KeyNotFoundException($"Product with id {id} not found.");
+            return product ?? throw new KeyNotFoundException(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND, id));
         }
 
         // Post

@@ -1,21 +1,15 @@
-﻿using Daylon.RateMeApp.Application.DTOs.Product;
-using Daylon.RateMeApp.Application.Interfaces.Products;
+﻿using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Communication.Requests.Product;
-using Daylon.RateMeApp.Domain.Entity;
+using Daylon.RateMeApp.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Daylon.RateMeApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController(IProductService productService) : ControllerBase
     {
-        private readonly IProductService _productService;
-
-        public ProductController(IProductService productService)
-        {
-            _productService = productService;
-        }
+        private readonly IProductService _productService = productService;
 
         // Get
 
@@ -33,7 +27,7 @@ namespace Daylon.RateMeApp.Api.Controllers
             var product = await _productService.GetProductByIdAsync(id);
 
             if (!ModelState.IsValid)
-                return BadRequest("Invalid request data.");
+                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
 
             return Ok(product);
         }
@@ -44,7 +38,7 @@ namespace Daylon.RateMeApp.Api.Controllers
         public async Task<IActionResult> Post([FromBody] RequestCreateProductJson request)
         {
             if (!ModelState.IsValid)
-                return BadRequest("Invalid request data.");
+                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
 
             var productDTO = await _productService.CreateProductAsync(request);
 
@@ -59,7 +53,7 @@ namespace Daylon.RateMeApp.Api.Controllers
             var result = await _productService.DeleteProductAsync(id);
 
             if (!result)
-                return NotFound("Product not found.");
+                return NotFound(ResourceMessagesException.PRODUCT_NO_FOUND);
 
             return NoContent();
         }

@@ -61,6 +61,51 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connection string is not configured..
+        /// </summary>
+        public static string CONNECTION_STRING_UNCONFIGURED {
+            get {
+                return ResourceManager.GetString("CONNECTION_STRING_UNCONFIGURED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product with id {0} not found..
+        /// </summary>
+        public static string PRODUCT_ID_NO_FOUND {
+            get {
+                return ResourceManager.GetString("PRODUCT_ID_NO_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product no found..
+        /// </summary>
+        public static string PRODUCT_NO_FOUND {
+            get {
+                return ResourceManager.GetString("PRODUCT_NO_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rating must be between 0 and 5..
+        /// </summary>
+        public static string PRODUCT_RATING_LIMIT {
+            get {
+                return ResourceManager.GetString("PRODUCT_RATING_LIMIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid request data..
+        /// </summary>
+        public static string REQUEST_INVALID {
+            get {
+                return ResourceManager.GetString("REQUEST_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknow Error..
         /// </summary>
         public static string UNKNOW_ERROR {
