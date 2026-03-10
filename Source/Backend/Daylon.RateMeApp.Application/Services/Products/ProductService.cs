@@ -4,6 +4,7 @@ using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity;
 using Daylon.RateMeApp.Domain.Entity.Enum;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
+using Daylon.RateMeApp.Exceptions;
 
 namespace Daylon.RateMeApp.Application.Services.Products
 {
@@ -24,7 +25,7 @@ namespace Daylon.RateMeApp.Application.Services.Products
         {
             var product = await _productRepository.GetProductByIdAsync(id);
 
-            return product ?? throw new KeyNotFoundException($"Product with ID {id} not found.");
+            return product ?? throw new KeyNotFoundException(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND));
         }
 
         // Post

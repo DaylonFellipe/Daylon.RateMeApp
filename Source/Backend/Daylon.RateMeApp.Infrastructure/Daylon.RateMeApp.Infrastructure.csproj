@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\Daylon.RateMeApp.Exceptions\Daylon.RateMeApp.Exceptions.csproj" />
     <ProjectReference Include="..\Daylon.RateMeApp.Domain\Daylon.RateMeApp.Domain.csproj" />
   </ItemGroup>
 
