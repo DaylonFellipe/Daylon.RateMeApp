@@ -12,6 +12,7 @@ namespace Daylon.RateMeApp.Application.Services.Products
         private readonly IProductRepository _productRepository = productRepository;
         private readonly IProductUseCase _productUseCase = productUseCase;
 
+        // Get
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
             var products = await _productRepository.GetAllProductsAsync();
@@ -19,6 +20,14 @@ namespace Daylon.RateMeApp.Application.Services.Products
             return products;
         }
 
+        public async Task<Product> GetProductByIdAsync(Guid id)
+        {
+            var product = await _productRepository.GetProductByIdAsync(id);
+
+            return product ?? throw new KeyNotFoundException($"Product with ID {id} not found.");
+        }
+
+        // Post
         public async Task<ProductDTO> CreateProductAsync(RequestCreateProductJson request)
         {
             var product = await _productUseCase.ExecuteCreateProductAsync(request);
@@ -35,6 +44,14 @@ namespace Daylon.RateMeApp.Application.Services.Products
             };
 
             return productDTO;
+        }
+
+        // Delete
+        public async Task<bool> DeleteProductAsync(Guid id)
+        {
+            var result = await _productRepository.DeleteProductAsync(id);
+
+            return result;
         }
 
         // Auxiliary Methods

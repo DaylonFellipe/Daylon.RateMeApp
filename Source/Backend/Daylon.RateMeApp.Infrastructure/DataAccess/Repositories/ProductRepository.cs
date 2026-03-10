@@ -27,5 +27,19 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
             await _dbContext.Products.AddAsync(product);
             await SaveChangesAsync();
         }
+
+        // Delete
+        public async Task<bool> DeleteProductAsync(Guid id)
+        {
+            var product = await GetProductByIdAsync(id);
+
+            if (product == null)
+                return false;
+
+            _dbContext.Products.Remove(product);
+
+            await SaveChangesAsync();
+            return true;
+        }
     }
 }
