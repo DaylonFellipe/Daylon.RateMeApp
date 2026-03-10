@@ -17,6 +17,8 @@ namespace Daylon.RateMeApp.Api.Controllers
             _productService = productService;
         }
 
+        // Get
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -24,6 +26,19 @@ namespace Daylon.RateMeApp.Api.Controllers
 
             return Ok(products);
         }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetById([FromQuery] Guid id)
+        {
+            var product = await _productService.GetProductByIdAsync(id);
+
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid request data.");
+
+            return Ok(product);
+        }
+
+        // Post
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RequestCreateProductJson request)
@@ -35,6 +50,8 @@ namespace Daylon.RateMeApp.Api.Controllers
 
             return Ok(productDTO);
         }
+
+        // Delete
 
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] Guid id)

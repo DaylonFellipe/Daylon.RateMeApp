@@ -8,6 +8,7 @@ namespace Daylon.RateMeApp.Application.Interfaces.Products
     {
         // Get
         Task<IEnumerable<Product>> GetAllProductsAsync();
+        Task<Product> GetProductByIdAsync(Guid id);
 
         // Post
         Task<ProductDTO> CreateProductAsync(RequestCreateProductJson request);
