@@ -70,11 +70,65 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid category..
+        /// </summary>
+        public static string PRODUCT_CATEGORY_INVALID {
+            get {
+                return ResourceManager.GetString("PRODUCT_CATEGORY_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid category is required..
+        /// </summary>
+        public static string PRODUCT_CATEGORY_INVALID_REQUIRED {
+            get {
+                return ResourceManager.GetString("PRODUCT_CATEGORY_INVALID_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product description is required..
+        /// </summary>
+        public static string PRODUCT_DESCRIPTION_EMPTY {
+            get {
+                return ResourceManager.GetString("PRODUCT_DESCRIPTION_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product description must no exceed 1000 characters..
+        /// </summary>
+        public static string PRODUCT_DESCRIPTION_MAX_LENGH {
+            get {
+                return ResourceManager.GetString("PRODUCT_DESCRIPTION_MAX_LENGH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product with id {0} not found..
         /// </summary>
         public static string PRODUCT_ID_NO_FOUND {
             get {
                 return ResourceManager.GetString("PRODUCT_ID_NO_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product name is required..
+        /// </summary>
+        public static string PRODUCT_NAME_EMPTY {
+            get {
+                return ResourceManager.GetString("PRODUCT_NAME_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product name must no exceed 200 characters..
+        /// </summary>
+        public static string PRODUCT_NAME_MAX_LENGH {
+            get {
+                return ResourceManager.GetString("PRODUCT_NAME_MAX_LENGH", resourceCulture);
             }
         }
         
@@ -88,11 +142,65 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Price must be greater than zero..
+        /// </summary>
+        public static string PRODUCT_PRICE_GREATER_THAN_ZERO {
+            get {
+                return ResourceManager.GetString("PRODUCT_PRICE_GREATER_THAN_ZERO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rating must be between 0 and 5..
         /// </summary>
         public static string PRODUCT_RATING_LIMIT {
             get {
                 return ResourceManager.GetString("PRODUCT_RATING_LIMIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid sub category..
+        /// </summary>
+        public static string PRODUCT_SUB_CATEGORY_INVALID {
+            get {
+                return ResourceManager.GetString("PRODUCT_SUB_CATEGORY_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid sub category is required..
+        /// </summary>
+        public static string PRODUCT_SUB_CATEGORY_INVALID_REQUIRED {
+            get {
+                return ResourceManager.GetString("PRODUCT_SUB_CATEGORY_INVALID_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier personalized name is required when supplier option is indefinite..
+        /// </summary>
+        public static string PRODUCT_SUPPLIER_INVALID {
+            get {
+                return ResourceManager.GetString("PRODUCT_SUPPLIER_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier personalized name must not exceed 200 characters..
+        /// </summary>
+        public static string PRODUCT_SUPPLIER_MAX_LENGH {
+            get {
+                return ResourceManager.GetString("PRODUCT_SUPPLIER_MAX_LENGH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid supplier option..
+        /// </summary>
+        public static string PRODUCT_SUPPLIER_OPTIONS_INVALID {
+            get {
+                return ResourceManager.GetString("PRODUCT_SUPPLIER_OPTIONS_INVALID", resourceCulture);
             }
         }
         

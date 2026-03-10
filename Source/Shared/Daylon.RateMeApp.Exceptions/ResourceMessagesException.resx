@@ -120,11 +120,32 @@
   <data name="CONNECTION_STRING_UNCONFIGURED" xml:space="preserve">
     <value>Connection string is not configured.</value>
   </data>
+  <data name="PRODUCT_CATEGORY_INVALID" xml:space="preserve">
+    <value>Invalid category.</value>
+  </data>
+  <data name="PRODUCT_CATEGORY_INVALID_REQUIRED" xml:space="preserve">
+    <value>Valid category is required.</value>
+  </data>
+  <data name="PRODUCT_DESCRIPTION_EMPTY" xml:space="preserve">
+    <value>Product description is required.</value>
+  </data>
+  <data name="PRODUCT_DESCRIPTION_MAX_LENGH" xml:space="preserve">
+    <value>Product description must no exceed 1000 characters.</value>
+  </data>
   <data name="PRODUCT_ID_NO_FOUND" xml:space="preserve">
     <value>Product with id {0} not found.</value>
   </data>
+  <data name="PRODUCT_NAME_EMPTY" xml:space="preserve">
+    <value>Product name is required.</value>
+  </data>
+  <data name="PRODUCT_NAME_MAX_LENGH" xml:space="preserve">
+    <value>Product name must no exceed 200 characters.</value>
+  </data>
   <data name="PRODUCT_NO_FOUND" xml:space="preserve">
     <value>Product no found.</value>
+  </data>
+  <data name="PRODUCT_PRICE_GREATER_THAN_ZERO" xml:space="preserve">
+    <value>Price must be greater than zero.</value>
   </data>
   <data name="PRODUCT_RATING_LIMIT" xml:space="preserve">
     <value>Rating must be between 0 and 5.</value>
@@ -134,5 +155,20 @@
   </data>
   <data name="UNKNOW_ERROR" xml:space="preserve">
     <value>Unknow Error.</value>
+  </data>
+  <data name="PRODUCT_SUB_CATEGORY_INVALID" xml:space="preserve">
+    <value>Invalid sub category.</value>
+  </data>
+  <data name="PRODUCT_SUB_CATEGORY_INVALID_REQUIRED" xml:space="preserve">
+    <value>Valid sub category is required.</value>
+  </data>
+  <data name="PRODUCT_SUPPLIER_OPTIONS_INVALID" xml:space="preserve">
+    <value>Invalid supplier option.</value>
+  </data>
+  <data name="PRODUCT_SUPPLIER_MAX_LENGH" xml:space="preserve">
+    <value>Supplier personalized name must not exceed 200 characters.</value>
+  </data>
+  <data name="PRODUCT_SUPPLIER_INVALID" xml:space="preserve">
+    <value>Supplier personalized name is required when supplier option is indefinite.</value>
   </data>
 </root>
