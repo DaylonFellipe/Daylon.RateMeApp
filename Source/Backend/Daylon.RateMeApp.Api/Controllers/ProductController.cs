@@ -14,20 +14,31 @@ namespace Daylon.RateMeApp.Api.Controllers
         // Get
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get()
         {
             var products = await _productService.GetAllProductsAsync();
 
+            if (products == null || !products.Any())
+                return NotFound(ResourceMessagesException.PRODUCT_NO_FOUND);
+
             return Ok(products);
         }
 
-        [HttpGet("id")]
-        public async Task<IActionResult> GetById([FromQuery] Guid id)
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetById([FromRoute]Guid id)
         {
-            var product = await _productService.GetProductByIdAsync(id);
-
             if (!ModelState.IsValid)
                 return BadRequest(ResourceMessagesException.REQUEST_INVALID);
+
+            var product = await _productService.GetProductByIdAsync(id);
+
+            if (product == null)
+                return NotFound(ResourceMessagesException.PRODUCT_ID_NO_FOUND);
 
             return Ok(product);
         }
@@ -35,6 +46,8 @@ namespace Daylon.RateMeApp.Api.Controllers
         // Post
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post([FromBody] RequestCreateProductJson request)
         {
             if (!ModelState.IsValid)
@@ -42,7 +55,7 @@ namespace Daylon.RateMeApp.Api.Controllers
 
             var productDTO = await _productService.CreateProductAsync(request);
 
-            return Ok(productDTO);
+            return Created("", productDTO);
         }
 
         // Delete
@@ -50,13 +63,16 @@ namespace Daylon.RateMeApp.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] Guid id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
+
             var result = await _productService.DeleteProductAsync(id);
 
             if (!result)
                 return NotFound(ResourceMessagesException.PRODUCT_NO_FOUND);
 
             return NoContent();
-        }
+        } 
     }
 }
 
