@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -22,6 +22,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daylon.RateMeApp.Communication", "Source\Shared\Daylon.RateMeApp.Communication\Daylon.RateMeApp.Communication.csproj", "{ADBE113B-D05D-4C11-8BBC-3030AAE2BAFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daylon.RateMeApp.Exceptions", "Source\Shared\Daylon.RateMeApp.Exceptions\Daylon.RateMeApp.Exceptions.csproj", "{C417637B-8036-4659-A790-9AD8282E5446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUtilities", "Tests\CommonTestUtilities\CommonTestUtilities.csproj", "{23A7F6CE-6EBA-43B8-97FE-A0E4CBA8EA44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "Tests\UseCases.Test\UseCases.Test.csproj", "{E4870B25-046B-414C-9DBF-919A0DA89F3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "Tests\Validators.Test\Validators.Test.csproj", "{BB6A547E-7D68-4402-B17F-1FA74968AD9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "Tests\WebApi.Test\WebApi.Test.csproj", "{09D34791-4B0E-4F4B-AFAC-6BCBE58C1859}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +61,22 @@ Global
 		{C417637B-8036-4659-A790-9AD8282E5446}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C417637B-8036-4659-A790-9AD8282E5446}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C417637B-8036-4659-A790-9AD8282E5446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23A7F6CE-6EBA-43B8-97FE-A0E4CBA8EA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23A7F6CE-6EBA-43B8-97FE-A0E4CBA8EA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23A7F6CE-6EBA-43B8-97FE-A0E4CBA8EA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23A7F6CE-6EBA-43B8-97FE-A0E4CBA8EA44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4870B25-046B-414C-9DBF-919A0DA89F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4870B25-046B-414C-9DBF-919A0DA89F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4870B25-046B-414C-9DBF-919A0DA89F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4870B25-046B-414C-9DBF-919A0DA89F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6A547E-7D68-4402-B17F-1FA74968AD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6A547E-7D68-4402-B17F-1FA74968AD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6A547E-7D68-4402-B17F-1FA74968AD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6A547E-7D68-4402-B17F-1FA74968AD9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D34791-4B0E-4F4B-AFAC-6BCBE58C1859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D34791-4B0E-4F4B-AFAC-6BCBE58C1859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D34791-4B0E-4F4B-AFAC-6BCBE58C1859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D34791-4B0E-4F4B-AFAC-6BCBE58C1859}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +90,10 @@ Global
 		{BBFAD6F3-72D1-40B4-9D36-A277A4D58FDE} = {9F36A488-8F2B-4F39-AFBD-92DFA8A542A0}
 		{ADBE113B-D05D-4C11-8BBC-3030AAE2BAFD} = {026E9C1A-7A5A-4CD8-B2C5-60D5194AC13C}
 		{C417637B-8036-4659-A790-9AD8282E5446} = {026E9C1A-7A5A-4CD8-B2C5-60D5194AC13C}
+		{23A7F6CE-6EBA-43B8-97FE-A0E4CBA8EA44} = {4F6F695F-AEC6-46B5-AE8C-BF53987E6A7D}
+		{E4870B25-046B-414C-9DBF-919A0DA89F3C} = {4F6F695F-AEC6-46B5-AE8C-BF53987E6A7D}
+		{BB6A547E-7D68-4402-B17F-1FA74968AD9C} = {4F6F695F-AEC6-46B5-AE8C-BF53987E6A7D}
+		{09D34791-4B0E-4F4B-AFAC-6BCBE58C1859} = {4F6F695F-AEC6-46B5-AE8C-BF53987E6A7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {74B188E8-24B0-4E29-8986-06D02CD3F013}
