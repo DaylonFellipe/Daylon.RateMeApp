@@ -11,6 +11,9 @@ namespace Daylon.RateMeApp.Domain.Interfaces.Repositories
         // Post
         Task CreateProductAsync(Product product);
 
+        // Put
+        Task UpdateProductAsync(Product product);
+
         // Delete
         Task<bool> DeleteProductAsync(Guid id);
     }

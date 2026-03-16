@@ -12,7 +12,6 @@ namespace Daylon.RateMeApp.Api.Controllers
         private readonly IProductService _productService = productService;
 
         // Get
-
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -44,7 +43,6 @@ namespace Daylon.RateMeApp.Api.Controllers
         }
 
         // Post
-
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -58,8 +56,21 @@ namespace Daylon.RateMeApp.Api.Controllers
             return Created("", productDTO);
         }
 
-        // Delete
+        // Put
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Put([FromBody] RequestUpdateProductJson request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
 
+            var result = await _productService.UpdateProductAsync(request);
+
+            return Ok(result);
+        }
+
+        // Delete
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] Guid id)
         {

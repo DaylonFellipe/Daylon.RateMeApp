@@ -33,16 +33,17 @@ namespace Daylon.RateMeApp.Application.Services.Products
         {
             var product = await _productUseCase.ExecuteCreateProductAsync(request);
 
-            var productDTO = new ProductDTO
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Price = (product.Price ?? 0),
-                Rating = product.Rating ?? 0,
-                Category = product.Category,
-                SubCategory = product.SubCategory,
-                SupplierName = GetSupplierName(product)
-            };
+            var productDTO = ProductToDTO(product);
+
+            return productDTO;
+        }
+
+        // Put
+        public async Task<ProductDTO> UpdateProductAsync(RequestUpdateProductJson request)
+        {
+            var product = await _productUseCase.ExecuteUpdateProductAsync(request);
+
+            var productDTO = ProductToDTO(product);
 
             return productDTO;
         }
@@ -65,6 +66,22 @@ namespace Daylon.RateMeApp.Application.Services.Products
                 return product.SupplierPersonalizedName;
 
             return "Unknown Supplier";
+        }
+
+        private static ProductDTO ProductToDTO(Product product)
+        {
+            var productDTO = new ProductDTO
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Price = (product.Price ?? 0),
+                Rating = product.Rating ?? 0,
+                Category = product.Category,
+                SubCategory = product.SubCategory,
+                SupplierName = GetSupplierName(product)
+            };
+
+            return productDTO;
         }
     }
 }

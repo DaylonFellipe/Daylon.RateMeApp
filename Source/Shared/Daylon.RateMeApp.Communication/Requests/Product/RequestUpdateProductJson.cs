@@ -3,26 +3,27 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Daylon.RateMeApp.Communication.Requests.Product
 {
-    public class RequestCreateProductJson
+    public class RequestUpdateProductJson
     {
-        // Product Properts
-        public string Name { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
+        // Product Properties
+        public Guid Id { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; } 
         public double? Price { get; set; }
 
         // Rating
+        [Range(0, 5, ErrorMessage = "Rating must be between 0 and 5.")]
         public double? Rating { get; set; }
 
         // Image
-        public string? ImageUrl { get; set; } = "hTps://www.exemplo.com\r\n";
+        public string? ImageUrl { get; set; }
 
         // Category/SubCategory
-        public ProductCategoryEnum Category { get; set; }
-        public ProductSubCategoryEnum SubCategory { get; set; }
+        public ProductCategoryEnum? Category { get; set; }
+        public ProductSubCategoryEnum? SubCategory { get; set; }
 
         // Supplier
         public SupplierOptionsEnum? SupplierOption { get; set; }
         public string? SupplierPersonalizedName { get; set; }
-
     }
 }

@@ -13,6 +13,9 @@ namespace Daylon.RateMeApp.Application.Interfaces.Products
         // Post
         Task<ProductDTO> CreateProductAsync(RequestCreateProductJson request);
 
+        // Put
+        Task<ProductDTO> UpdateProductAsync(RequestUpdateProductJson request);
+
         // Delete
         Task<bool> DeleteProductAsync(Guid id);
     }
