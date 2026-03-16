@@ -36,9 +36,9 @@ namespace Daylon.RateMeApp.Application.UseCases.Product.Validators
                 Enum.IsDefined(typeof(SupplierOptionsEnum), supplierOption)).WithMessage(ResourceMessagesException.PRODUCT_SUPPLIER_OPTIONS_INVALID);
 
             RuleFor(x => x.SupplierPersonalizedName)
-                .MaximumLength(200).WithMessage(ResourceMessagesException.PRODUCT_SUPPLIER_MAX_LENGH)
+                .MaximumLength(200)
                 .When(x => x.SupplierOption == null || x.SupplierOption == SupplierOptionsEnum.Indefinite)
-                .WithMessage(ResourceMessagesException.PRODUCT_SUPPLIER_INVALID);
+                .WithMessage(ResourceMessagesException.PRODUCT_SUPPLIER_MAX_LENGH);
         }
     }
 }
