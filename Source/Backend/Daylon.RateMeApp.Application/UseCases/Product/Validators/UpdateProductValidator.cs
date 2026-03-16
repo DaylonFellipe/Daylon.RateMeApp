@@ -5,31 +5,32 @@ using FluentValidation;
 
 namespace Daylon.RateMeApp.Application.UseCases.Product.Validators
 {
-    public class CreateProductValidator : AbstractValidator<RequestCreateProductJson>
+    public class UpdateProductValidator : AbstractValidator<RequestUpdateProductJson>
     {
-        public CreateProductValidator()
+        public UpdateProductValidator()
         {
+            ClassLevelCascadeMode = CascadeMode.Stop;
+
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage(ResourceMessagesException.PRODUCT_ID_EMPTY);
+
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage(ResourceMessagesException.PRODUCT_NAME_EMPTY)
                 .MaximumLength(200).WithMessage(ResourceMessagesException.PRODUCT_NAME_MAX_LENGH);
 
             RuleFor(x => x.Description)
-            .NotEmpty().WithMessage(ResourceMessagesException.PRODUCT_DESCRIPTION_EMPTY)
             .MaximumLength(1000).WithMessage(ResourceMessagesException.PRODUCT_DESCRIPTION_MAX_LENGH);
 
             RuleFor(x => x.Price)
                 .GreaterThanOrEqualTo(0).WithMessage(ResourceMessagesException.PRODUCT_PRICE_GREATER_THAN_ZERO);
-
+         
             RuleFor(x => x.Rating)
                 .InclusiveBetween(0, 5).WithMessage(ResourceMessagesException.PRODUCT_RATING_LIMIT);
 
             RuleFor(x => x.Category)
-                .IsInEnum().WithMessage(ResourceMessagesException.PRODUCT_CATEGORY_INVALID_REQUIRED)
-                .Must(category => Enum.IsDefined(category)).WithMessage(ResourceMessagesException.PRODUCT_CATEGORY_INVALID);
+                .Must(category => category == null || Enum.IsDefined(typeof(ProductCategoryEnum), category)).WithMessage(ResourceMessagesException.PRODUCT_CATEGORY_INVALID);
 
             RuleFor(x => x.SubCategory)
-                .IsInEnum().WithMessage(ResourceMessagesException.PRODUCT_SUB_CATEGORY_INVALID_REQUIRED)
-                .Must(subCategory => Enum.IsDefined(subCategory)).WithMessage(ResourceMessagesException.PRODUCT_SUB_CATEGORY_INVALID);
+                .Must(subCategory => subCategory == null || Enum.IsDefined(typeof(ProductSubCategoryEnum), subCategory)).WithMessage(ResourceMessagesException.PRODUCT_SUB_CATEGORY_INVALID);
 
             RuleFor(x => x.SupplierOption)
                 .Must(supplierOption => supplierOption == null ||

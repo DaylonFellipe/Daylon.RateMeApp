@@ -3,13 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Daylon.RateMeApp.Infrastructure.DataAccess
 {
-    public class RateMeAppDbContext : DbContext
+    public class RateMeAppDbContext(DbContextOptions<RateMeAppDbContext> options) : DbContext(options)
     {
-        public RateMeAppDbContext(DbContextOptions<RateMeAppDbContext> options)
-            : base(options)
-        {
-        }
-
         public DbSet<Product> Products { get; set; } = null!;
     }
 }

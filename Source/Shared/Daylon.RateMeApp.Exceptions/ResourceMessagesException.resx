@@ -171,4 +171,7 @@
   <data name="PRODUCT_SUPPLIER_INVALID" xml:space="preserve">
     <value>Supplier personalized name is required when supplier option is indefinite.</value>
   </data>
+  <data name="PRODUCT_ID_EMPTY" xml:space="preserve">
+    <value>Product id is required.</value>
+  </data>
 </root>

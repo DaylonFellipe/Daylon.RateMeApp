@@ -25,23 +25,23 @@ namespace Daylon.RateMeApp.Api.Filters
                     HandleUnknowException(context);
                     break;
             }
-        }
-
-        private static void HandleValidationException(ExceptionContext context, ErrorOnValidationException ex)
+        } 
+        
+        private void HandleValidationException(ExceptionContext context, ErrorOnValidationException ex)
         {
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            context.Result = new BadRequestObjectResult(new ResponseErrorJson(ex.ValidationErrorsMessages));
+            context.Result = new BadRequestObjectResult(new ResponseErrorJson(ex.ErrorsMessages));
             context.ExceptionHandled = true;
         }
 
-        private static void HandleRateMeAppException(ExceptionContext context, RateMeAppException ex)
+        private void HandleRateMeAppException(ExceptionContext context, RateMeAppException ex)
         {
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
             context.Result = new BadRequestObjectResult(new ResponseErrorJson(ex.Message));
             context.ExceptionHandled = true;
         }
 
-        private static void HandleUnknowException(ExceptionContext context)
+        private void HandleUnknowException(ExceptionContext context)
         {
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.Result = new ObjectResult(new ResponseErrorJson(ResourceMessagesException.UNKNOW_ERROR));

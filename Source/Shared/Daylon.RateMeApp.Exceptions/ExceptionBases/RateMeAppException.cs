@@ -1,4 +1,4 @@
-﻿namespace Daylon.RateMeApp.Communication.Responses.Error
+﻿namespace Daylon.RateMeApp.Exceptions.ExceptionBases
 {
     public class RateMeAppException : SystemException
     {

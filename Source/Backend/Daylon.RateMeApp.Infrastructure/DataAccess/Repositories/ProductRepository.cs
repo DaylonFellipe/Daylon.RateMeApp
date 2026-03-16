@@ -2,6 +2,7 @@
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
 using Daylon.RateMeApp.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Formats.Asn1;
 
 namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
 {
@@ -26,6 +27,13 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
         public async Task CreateProductAsync(Product product)
         {
             await _dbContext.Products.AddAsync(product);
+            await SaveChangesAsync();
+        }
+
+        // Put
+        public async Task UpdateProductAsync(Product product)
+        {
+            _dbContext.Products.Update(product);
             await SaveChangesAsync();
         }
 

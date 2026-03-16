@@ -1,9 +1,7 @@
-﻿using Daylon.RateMeApp.Communication.Responses.Error;
-
-namespace Daylon.RateMeApp.Exceptions.ExceptionBases
+﻿namespace Daylon.RateMeApp.Exceptions.ExceptionBases
 {
-    public class ErrorOnValidationException(List<string> validationErrors) : RateMeAppException
+    public class ErrorOnValidationException(IList<string> errorMessages) : RateMeAppException
     {
-        public List<string> ValidationErrorsMessages = validationErrors;
+        public IList<string> ErrorsMessages { get; } = errorMessages;
     }
 }

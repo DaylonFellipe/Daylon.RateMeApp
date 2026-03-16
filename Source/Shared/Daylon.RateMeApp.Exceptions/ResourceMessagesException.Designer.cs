@@ -106,6 +106,15 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product id is required..
+        /// </summary>
+        public static string PRODUCT_ID_EMPTY {
+            get {
+                return ResourceManager.GetString("PRODUCT_ID_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product with id {0} not found..
         /// </summary>
         public static string PRODUCT_ID_NO_FOUND {
