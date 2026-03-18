@@ -1,6 +1,5 @@
 ﻿using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Communication.Requests.Product;
-using Daylon.RateMeApp.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Daylon.RateMeApp.Api.Controllers
@@ -19,9 +18,6 @@ namespace Daylon.RateMeApp.Api.Controllers
         {
             var products = await _productService.GetAllProductsAsync();
 
-            if (products == null || !products.Any())
-                return NotFound(ResourceMessagesException.PRODUCT_NO_FOUND);
-
             return Ok(products);
         }
 
@@ -29,11 +25,8 @@ namespace Daylon.RateMeApp.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetById([FromRoute]Guid id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
-
             var product = await _productService.GetProductByIdAsync(id);
 
             return Ok(product);
@@ -45,9 +38,6 @@ namespace Daylon.RateMeApp.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Post([FromBody] RequestCreateProductJson request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
-
             var productDTO = await _productService.CreateProductAsync(request);
 
             return Created("", productDTO);
@@ -59,9 +49,6 @@ namespace Daylon.RateMeApp.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Put([FromBody] RequestUpdateProductJson request)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
-
             var result = await _productService.UpdateProductAsync(request);
 
             return Ok(result);
@@ -71,16 +58,10 @@ namespace Daylon.RateMeApp.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete([FromQuery] Guid id)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ResourceMessagesException.REQUEST_INVALID);
-
-            var result = await _productService.DeleteProductAsync(id);
-
-            if (!result)
-                return NotFound(ResourceMessagesException.PRODUCT_NO_FOUND);
+            await _productService.DeleteProductAsync(id);
 
             return NoContent();
-        } 
+        }
     }
 }
 

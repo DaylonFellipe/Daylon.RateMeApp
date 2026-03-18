@@ -15,8 +15,15 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
         private async Task SaveChangesAsync() => await _dbContext.SaveChangesAsync();
 
         // Get
-        public async Task<IEnumerable<Product>> GetAllProductsAsync() =>
-            await _dbContext.Products.ToListAsync();
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
+        {
+           var productsList =  await _dbContext.Products.ToListAsync();
+
+            if (productsList == null || productsList.Count == 0)
+                throw new RateMeAppException(ResourceMessagesException.PRODUCT_NO_FOUND);
+
+            return productsList;
+        }
 
         public async Task<Product?> GetProductByIdAsync(Guid id)
         {
