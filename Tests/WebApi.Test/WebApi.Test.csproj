@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Product\Put\" />
-    <Folder Include="Product\Post\" />
   </ItemGroup>
 
   <ItemGroup>
