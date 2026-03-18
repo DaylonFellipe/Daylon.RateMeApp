@@ -40,6 +40,8 @@ app.MapControllers();
 
 app.Run();
 
+public partial class Program { }
+
 //     ╱|、
 //    (-ˎ- >  
 //    |、˜〵          
