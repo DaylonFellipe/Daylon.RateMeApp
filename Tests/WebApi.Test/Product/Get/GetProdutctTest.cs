@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using System.Linq;
+﻿using Daylon.RateMeApp.Exceptions;
+using FluentAssertions;
 using System.Net;
 using WebApi.Test.Helpers.Product;
 
@@ -28,6 +28,20 @@ namespace WebApi.Test.Product.Get
         }
 
         [Fact]
+        public async Task Error_Get_Products_No_Found()
+        {
+            await Helper.CreateProductsAsync(0);
+
+            var response = await _httpClient.GetAsync("/api/Product");
+
+            response.StatusCode.Should().NotBe(HttpStatusCode.OK);
+
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            responseBody.Should().Contain(string.Format(ResourceMessagesException.PRODUCT_NO_FOUND ));
+        }
+
+        [Fact]
         public async Task Success_Get_Product_By_Id()
         {
             var productId = await Helper.CreateProductAndGetIdAsync();
@@ -42,7 +56,7 @@ namespace WebApi.Test.Product.Get
         }
 
         [Fact]
-        public async Task NotFound_Get_Product_By_Invalid_Id()
+        public async Task Error_Get_Product_By_Id_No_Found()
         {
             var invalidId = Guid.NewGuid();
 
@@ -52,7 +66,7 @@ namespace WebApi.Test.Product.Get
 
             var responseBody = await response.Content.ReadAsStringAsync();
 
-            responseBody.Should().Contain(string.Format((Daylon.RateMeApp.Exceptions.ResourceMessagesException.PRODUCT_ID_NO_FOUND), invalidId));
+            responseBody.Should().Contain(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), invalidId));
         }
     }
 }
