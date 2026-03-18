@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Product\Put\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Source\Backend\Daylon.RateMeApp.Api\Daylon.RateMeApp.Api.csproj" />
     <ProjectReference Include="..\..\Source\Backend\Daylon.RateMeApp.Infrastructure\Daylon.RateMeApp.Infrastructure.csproj" />
     <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
