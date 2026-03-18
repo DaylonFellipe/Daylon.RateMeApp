@@ -4,7 +4,6 @@ using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity;
 using Daylon.RateMeApp.Domain.Entity.Enum;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
-using Daylon.RateMeApp.Exceptions;
 
 namespace Daylon.RateMeApp.Application.Services.Products
 {
@@ -24,8 +23,7 @@ namespace Daylon.RateMeApp.Application.Services.Products
         public async Task<Product> GetProductByIdAsync(Guid id)
         {
             var product = await _productRepository.GetProductByIdAsync(id);
-
-            return product ?? throw new KeyNotFoundException(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND));
+            return product!;
         }
 
         // Post

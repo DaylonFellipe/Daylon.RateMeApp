@@ -36,9 +36,6 @@ namespace Daylon.RateMeApp.Api.Controllers
 
             var product = await _productService.GetProductByIdAsync(id);
 
-            if (product == null)
-                return NotFound(ResourceMessagesException.PRODUCT_ID_NO_FOUND);
-
             return Ok(product);
         }
 
