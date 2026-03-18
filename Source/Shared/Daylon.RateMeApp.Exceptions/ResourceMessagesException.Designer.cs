@@ -142,7 +142,7 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product no found..
+        ///   Looks up a localized string similar to Products no found..
         /// </summary>
         public static string PRODUCT_NO_FOUND {
             get {

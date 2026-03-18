@@ -142,7 +142,7 @@
     <value>Product name must no exceed 200 characters.</value>
   </data>
   <data name="PRODUCT_NO_FOUND" xml:space="preserve">
-    <value>Product no found.</value>
+    <value>Products no found.</value>
   </data>
   <data name="PRODUCT_PRICE_GREATER_THAN_ZERO" xml:space="preserve">
     <value>Price must be greater than zero.</value>
