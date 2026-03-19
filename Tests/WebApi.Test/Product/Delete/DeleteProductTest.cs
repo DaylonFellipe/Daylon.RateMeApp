@@ -29,15 +29,15 @@ namespace WebApi.Test.Product.Delete
         [Fact]
         public async Task Error_Delete_Product_No_Found()
         {
-            var productId = Guid.NewGuid();
+            var invalidId = Guid.NewGuid();
 
-            var response = await _httpClient.DeleteAsync($"/api/Product?id={productId}");
+            var response = await _httpClient.DeleteAsync($"/api/Product?id={invalidId}");
 
             response.StatusCode.Should().NotBe(System.Net.HttpStatusCode.NoContent);
 
             var responseBody = await response.Content.ReadAsStringAsync();
 
-            responseBody.Should().Contain(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), productId));
+            responseBody.Should().Contain(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), invalidId));
         }
     }
 }
