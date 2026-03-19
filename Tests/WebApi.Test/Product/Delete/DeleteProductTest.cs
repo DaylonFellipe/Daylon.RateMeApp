@@ -1,9 +1,5 @@
-﻿using Azure.Core;
-using CommonTestUtilities.Requests.Product;
-using Daylon.RateMeApp.Exceptions;
+﻿using Daylon.RateMeApp.Exceptions;
 using FluentAssertions;
-using System.Net.Http.Json;
-using System.Security.Policy;
 using WebApi.Test.Helpers.Product;
 
 namespace WebApi.Test.Product.Delete

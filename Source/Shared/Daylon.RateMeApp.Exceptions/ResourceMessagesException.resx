@@ -144,6 +144,9 @@
   <data name="PRODUCT_NO_FOUND" xml:space="preserve">
     <value>Products no found.</value>
   </data>
+  <data name="POST_NO_FOUND" xml:space="preserve">
+    <value>Post no found.</value>
+  </data>
   <data name="PRODUCT_PRICE_GREATER_THAN_ZERO" xml:space="preserve">
     <value>Price must be greater than zero.</value>
   </data>
@@ -173,5 +176,8 @@
   </data>
   <data name="PRODUCT_ID_EMPTY" xml:space="preserve">
     <value>Product id is required.</value>
+  </data>
+  <data name="POST_PRODUCT_EMPTY" xml:space="preserve">
+    <value>FeedPost.Product is null.</value>
   </data>
 </root>
