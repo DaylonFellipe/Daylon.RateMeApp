@@ -1,4 +1,6 @@
-﻿using Daylon.RateMeApp.Domain.Entities;
+﻿using Daylon.RateMeApp.Application.DTOs.FeedPost;
+using Daylon.RateMeApp.Communication.Requests.FeedPost;
+using Daylon.RateMeApp.Domain.Entities;
 
 namespace Daylon.RateMeApp.Application.Interfaces.FeedPosts
 {
@@ -6,5 +8,8 @@ namespace Daylon.RateMeApp.Application.Interfaces.FeedPosts
     {
         // Get
         Task<IEnumerable<FeedPost>> GetAllPostsAsync();
+
+        // Post
+        Task<FeedPostDTO> CreatePostAsync(RequestCreateFeedPostJson request);
     }
 }

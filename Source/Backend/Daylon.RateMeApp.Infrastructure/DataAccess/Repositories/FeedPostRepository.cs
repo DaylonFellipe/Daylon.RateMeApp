@@ -33,5 +33,12 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
 
             return postsList;
         }
+
+        // Post
+        public async Task CreateFeedPostAsync(FeedPost post)
+        {
+            await _dbContext.FeedPosts.AddAsync(post);
+            await SaveChangesAsync();
+        }
     }
 }

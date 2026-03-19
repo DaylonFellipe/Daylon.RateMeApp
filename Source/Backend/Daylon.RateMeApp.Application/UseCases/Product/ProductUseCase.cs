@@ -1,23 +1,23 @@
-﻿using Daylon.RateMeApp.Application.Interfaces.Products;
+﻿using Daylon.RateMeApp.Application.Helpers;
+using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Application.UseCases.Product.Validators;
 using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity.Enum;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
 using Daylon.RateMeApp.Exceptions;
-using Daylon.RateMeApp.Exceptions.ExceptionBases;
-using FluentValidation;
 
 namespace Daylon.RateMeApp.Application.UseCases.Product
 {
     public class ProductUseCase(IProductRepository productRepository) : IProductUseCase
     {
         private readonly IProductRepository _productRepository = productRepository;
+        private readonly ApplicationHelper Helper = new();
 
         // Post
         public async Task<Domain.Entity.Product> ExecuteCreateProductAsync(RequestCreateProductJson request)
         {
             // Validate
-            await ValidateRequest(request, new CreateProductValidator());
+            await Helper.ValidateRequestAsync(request, new CreateProductValidator());
 
             // Map
             var product = new Domain.Entity.Product
@@ -48,7 +48,7 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
                 throw new KeyNotFoundException(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND));
 
             // Validate
-            await ValidateRequest(request, new UpdateProductValidator());
+            await Helper.ValidateRequestAsync(request, new UpdateProductValidator());
 
             // Update Properties
             if (!string.IsNullOrWhiteSpace(request.Name)) product.Name = request.Name;
@@ -69,18 +69,6 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
             await _productRepository.UpdateProductAsync(product);
 
             return product;
-        }
-
-        // Auxiliary Methods
-        private static async Task ValidateRequest<T>(T request, AbstractValidator<T> validator)
-        {
-            var result = await validator.ValidateAsync(request);
-
-            if (!result.IsValid)
-            {
-                var errors = result.Errors.Select(e => e.ErrorMessage).ToList();
-                throw new ErrorOnValidationException(errors);
-            }
         }
     }
 }

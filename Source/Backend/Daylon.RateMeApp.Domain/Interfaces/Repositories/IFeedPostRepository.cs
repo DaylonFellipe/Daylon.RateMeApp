@@ -6,5 +6,8 @@ namespace Daylon.RateMeApp.Domain.Interfaces.Repositories
     {
         // Get
         Task<IEnumerable<FeedPost>> GetAllPostsAsync();
+
+        // Post
+        Task CreateFeedPostAsync(FeedPost post);
     }
 }
