@@ -13,6 +13,9 @@ namespace Daylon.RateMeApp.Application.Interfaces.FeedPosts
         // Post
         Task<FeedPostDTO> CreatePostAsync(RequestCreateFeedPostJson request);
 
+        // Put
+        Task<FeedPostDTO> UpdateFeedPostAsync(RequestUpdateFeedPostJson request);
+
         // Delete
         Task<bool> DeleteFeedPostAsync(Guid postId);
     }
