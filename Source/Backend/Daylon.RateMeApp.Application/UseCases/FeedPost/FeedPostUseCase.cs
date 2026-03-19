@@ -38,5 +38,32 @@ namespace Daylon.RateMeApp.Application.UseCases.FeedPost
 
             return feedPost;
         }
+
+        // Put
+        public async Task<Domain.Entities.FeedPost> UpdatePostAsync(RequestUpdateFeedPostJson request)
+        {
+            // Get existing post
+            var feedPost = await _feedRepository.GetFeedPostByIdAsync(request.Id) ??
+                throw new RateMeAppException(string.Format((ResourceMessagesException.POST_ID_NO_FOUND), request.Id));
+
+            // Validate
+            await Helper.ValidateRequestAsync(request, new UpdateFeedPostValidator());
+
+            // Update
+
+            if (request.ProductId.HasValue)
+            {
+                var product = await _productRepository.GetProductByIdAsync(request.ProductId.Value);
+                feedPost.Product = product!;
+            }
+
+            if (request.IsFavorite.HasValue)
+                feedPost.IsFavorite = request.IsFavorite.Value;
+
+            // Save
+            await _feedRepository.UpdateFeedPostAsync(feedPost);
+
+            return feedPost;
+        }
     }
 }

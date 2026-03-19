@@ -1,10 +1,14 @@
 ﻿using Daylon.RateMeApp.Communication.Requests.FeedPost;
+using Daylon.RateMeApp.Domain.Entities;
 
 namespace Daylon.RateMeApp.Application.Interfaces.FeedPosts
 {
     public interface IFeedPostUseCase
     {
         // Post
-        Task<Domain.Entities.FeedPost> CreatePostAsync(RequestCreateFeedPostJson request);
+        Task<FeedPost> CreatePostAsync(RequestCreateFeedPostJson request);
+
+        // Put
+        Task<FeedPost> UpdatePostAsync(RequestUpdateFeedPostJson request);
     }
 }

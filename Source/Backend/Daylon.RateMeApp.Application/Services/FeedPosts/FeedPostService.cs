@@ -38,6 +38,16 @@ namespace Daylon.RateMeApp.Application.Services.FeedPosts
             return postDTO;
         }
 
+        // Put
+        public async Task<FeedPostDTO> UpdateFeedPostAsync(RequestUpdateFeedPostJson request)
+        {
+            var post = await _useCase.UpdatePostAsync(request);
+
+            var postDTO = FeedPostToDTO(post);
+
+            return postDTO;
+        }
+
         // Delete
         public async Task<bool> DeleteFeedPostAsync(Guid postId)
         {

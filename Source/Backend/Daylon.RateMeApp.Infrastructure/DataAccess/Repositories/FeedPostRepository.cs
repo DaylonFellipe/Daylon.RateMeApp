@@ -41,10 +41,32 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
             return post ?? throw new RateMeAppException(string.Format(ResourceMessagesException.POST_ID_NO_FOUND, id));
         }
 
+        public async Task<bool> ExisteFeedPostAsync(Guid id)
+        {
+            var postExists = await _dbContext.FeedPosts.AnyAsync(p => p.Id == id);
+
+            if (!postExists)
+                return false;
+
+            return postExists;
+        }
+
         // Post
         public async Task CreateFeedPostAsync(FeedPost post)
         {
             await _dbContext.FeedPosts.AddAsync(post);
+            await SaveChangesAsync();
+        }
+
+        // Put
+        public async Task UpdateFeedPostAsync(FeedPost post)
+        {
+            var existingPost = await GetFeedPostByIdAsync(post.Id);
+
+            if (ExisteFeedPostAsync(post.Id).Result is false)
+                throw new RateMeAppException(string.Format(ResourceMessagesException.POST_ID_NO_FOUND, post.Id));
+
+            _dbContext.FeedPosts.Update(existingPost!);
             await SaveChangesAsync();
         }
 

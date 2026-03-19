@@ -45,6 +45,17 @@ namespace Daylon.RateMeApp.Api.Controllers
             return Created("", postDTO);
         }
 
+        // Put
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Put(RequestUpdateFeedPostJson request)
+        {
+            var result = await _postService.UpdateFeedPostAsync(request);
+
+            return Ok(result);
+        }
+
         // Delete
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
