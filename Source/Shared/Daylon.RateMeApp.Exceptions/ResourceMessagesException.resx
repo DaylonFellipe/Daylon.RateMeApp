@@ -180,4 +180,13 @@
   <data name="POST_PRODUCT_EMPTY" xml:space="preserve">
     <value>FeedPost.Product is null.</value>
   </data>
+  <data name="POST_PRODUCT_ID_EMPTY" xml:space="preserve">
+    <value>Product Id is required.</value>
+  </data>
+  <data name="POST_FAVORITE_EMPTY" xml:space="preserve">
+    <value>Favorite is required.</value>
+  </data>
+  <data name="POST_ID_NO_FOUND" xml:space="preserve">
+    <value>Post with id {0} not found.</value>
+  </data>
 </root>

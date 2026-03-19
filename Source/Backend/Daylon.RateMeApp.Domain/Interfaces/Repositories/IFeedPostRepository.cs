@@ -6,5 +6,12 @@ namespace Daylon.RateMeApp.Domain.Interfaces.Repositories
     {
         // Get
         Task<IEnumerable<FeedPost>> GetAllPostsAsync();
+        Task<FeedPost?> GetFeedPostByIdAsync(Guid id);
+
+        // Post
+        Task CreateFeedPostAsync(FeedPost post);
+
+        // Delete
+        Task<bool> DeleteFeedPostAsync(Guid postId);
     }
 }

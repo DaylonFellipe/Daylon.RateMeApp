@@ -70,6 +70,24 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Favorite is required..
+        /// </summary>
+        public static string POST_FAVORITE_EMPTY {
+            get {
+                return ResourceManager.GetString("POST_FAVORITE_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post with id {0} not found..
+        /// </summary>
+        public static string POST_ID_NO_FOUND {
+            get {
+                return ResourceManager.GetString("POST_ID_NO_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Post no found..
         /// </summary>
         public static string POST_NO_FOUND {
@@ -84,6 +102,15 @@ namespace Daylon.RateMeApp.Exceptions {
         public static string POST_PRODUCT_EMPTY {
             get {
                 return ResourceManager.GetString("POST_PRODUCT_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Id is required..
+        /// </summary>
+        public static string POST_PRODUCT_ID_EMPTY {
+            get {
+                return ResourceManager.GetString("POST_PRODUCT_ID_EMPTY", resourceCulture);
             }
         }
         

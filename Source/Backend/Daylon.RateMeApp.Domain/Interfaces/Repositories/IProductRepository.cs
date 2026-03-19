@@ -7,6 +7,7 @@ namespace Daylon.RateMeApp.Domain.Interfaces.Repositories
         // Get
         Task<IEnumerable<Product>> GetAllProductsAsync();
         Task<Product?> GetProductByIdAsync(Guid id);
+        Task<bool> ExisteProductAsync(Guid id);
 
         // Post
         Task CreateProductAsync(Product product);

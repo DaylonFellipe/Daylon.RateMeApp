@@ -30,6 +30,13 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
             return product ?? throw new RateMeAppException(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND, id));
         }
 
+        public async Task<bool> ExisteProductAsync(Guid id)
+        {
+            var productExists = await _dbContext.Products.AnyAsync(p => p.Id == id);
+
+            return productExists;
+        }
+
         // Post
         public async Task CreateProductAsync(Product product)
         {

@@ -2,6 +2,7 @@
 using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Application.Services.FeedPosts;
 using Daylon.RateMeApp.Application.Services.Products;
+using Daylon.RateMeApp.Application.UseCases.FeedPost;
 using Daylon.RateMeApp.Application.UseCases.Product;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +20,7 @@ namespace Daylon.RateMeApp.Application
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductUseCase, ProductUseCase>();
             services.AddScoped<IFeedPostService, FeedPostService>();
+            services.AddScoped<IFeedPostUseCase, FeedPostUseCase>();
         }
     }
 }
