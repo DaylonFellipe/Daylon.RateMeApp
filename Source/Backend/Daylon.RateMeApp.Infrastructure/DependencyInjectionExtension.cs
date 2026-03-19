@@ -19,6 +19,7 @@ namespace Daylon.RateMeApp.Infrastructure
         private static void AddServices(IServiceCollection services)
         {
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IFeedPostRepository, FeedPostRepository>();
         }
 
         private static void AddDbContexts(IServiceCollection services, IConfiguration configuration)
