@@ -8,8 +8,12 @@ namespace Daylon.RateMeApp.Application.Interfaces.FeedPosts
     {
         // Get
         Task<IEnumerable<FeedPost>> GetAllPostsAsync();
+        Task<FeedPostDTO> GetFeedPostByIdAsync(Guid id);
 
         // Post
         Task<FeedPostDTO> CreatePostAsync(RequestCreateFeedPostJson request);
+
+        // Delete
+        Task<bool> DeleteFeedPostAsync(Guid postId);
     }
 }

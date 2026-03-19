@@ -79,6 +79,15 @@ namespace Daylon.RateMeApp.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Post with id {0} not found..
+        /// </summary>
+        public static string POST_ID_NO_FOUND {
+            get {
+                return ResourceManager.GetString("POST_ID_NO_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Post no found..
         /// </summary>
         public static string POST_NO_FOUND {

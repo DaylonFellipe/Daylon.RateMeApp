@@ -186,4 +186,7 @@
   <data name="POST_FAVORITE_EMPTY" xml:space="preserve">
     <value>Favorite is required.</value>
   </data>
+  <data name="POST_ID_NO_FOUND" xml:space="preserve">
+    <value>Post with id {0} not found.</value>
+  </data>
 </root>

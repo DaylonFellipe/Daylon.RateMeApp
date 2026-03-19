@@ -19,6 +19,15 @@ namespace Daylon.RateMeApp.Application.Services.FeedPosts
             return posts;
         }
 
+        public async Task<FeedPostDTO> GetFeedPostByIdAsync(Guid id)
+        {
+            var post = await _postRepository.GetFeedPostByIdAsync(id);
+
+            var postDTO = FeedPostToDTO(post!);
+
+            return postDTO;
+        }
+
         // Post
         public async Task<FeedPostDTO> CreatePostAsync(RequestCreateFeedPostJson request)
         {
@@ -27,6 +36,14 @@ namespace Daylon.RateMeApp.Application.Services.FeedPosts
             var postDTO = FeedPostToDTO(post);
 
             return postDTO;
+        }
+
+        // Delete
+        public async Task<bool> DeleteFeedPostAsync(Guid postId)
+        {
+            var result = await _postRepository.DeleteFeedPostAsync(postId);
+
+            return result;
         }
 
         // Auxiliary Methods

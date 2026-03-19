@@ -34,11 +34,32 @@ namespace Daylon.RateMeApp.Infrastructure.DataAccess.Repositories
             return postsList;
         }
 
+        public async Task<FeedPost?> GetFeedPostByIdAsync(Guid id)
+        {
+            var post = await _dbContext.FeedPosts.Include(p => p.Product).FirstOrDefaultAsync(p => p.Id == id);
+
+            return post ?? throw new RateMeAppException(string.Format(ResourceMessagesException.POST_ID_NO_FOUND, id));
+        }
+
         // Post
         public async Task CreateFeedPostAsync(FeedPost post)
         {
             await _dbContext.FeedPosts.AddAsync(post);
             await SaveChangesAsync();
+        }
+
+        // Delete
+        public async Task<bool> DeleteFeedPostAsync(Guid postId)
+        {
+            var post = await GetFeedPostByIdAsync(postId);
+
+            if (post == null)
+                return false;
+
+            _dbContext.FeedPosts.Remove(post);
+
+            await SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -21,6 +21,19 @@ namespace Daylon.RateMeApp.Api.Controllers
             return Ok(posts);
         }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetPostByIdAsync(Guid id)
+        {
+            var post = await _postService.GetFeedPostByIdAsync(id);
+
+            if (post == null)
+                return NotFound();
+
+            return Ok(post);
+        }
+
         // Post
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -30,6 +43,21 @@ namespace Daylon.RateMeApp.Api.Controllers
             var postDTO = await _postService.CreatePostAsync(request);
 
             return Created("", postDTO);
+        }
+
+        // Delete
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _postService.DeleteFeedPostAsync(id);
+
+            if (!result)
+                return NotFound();
+
+            return NoContent();
         }
     }
 }
