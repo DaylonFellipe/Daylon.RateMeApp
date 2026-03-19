@@ -1,4 +1,5 @@
 ﻿using CommonTestUtilities.Requests.Product;
+using Daylon.RateMeApp.Exceptions;
 using FluentAssertions;
 using System.Net.Http.Json;
 using WebApi.Test.Helpers.Product;
@@ -16,7 +17,7 @@ namespace WebApi.Test.Product.Put
         [Fact]
         public async Task Success()
         {
-           var productId =  await Helper.CreateProductAndGetIdAsync();
+            var productId = await Helper.CreateProductAndGetIdAsync();
 
             var request = RequestUpdateProductJsonBuilder.Build(productId);
 
@@ -28,6 +29,22 @@ namespace WebApi.Test.Product.Put
 
             responseBody.GetProperty("id").GetGuid().Should().Be(productId);
             responseBody.GetProperty("name").GetString().Should().Be(request.Name);
+        }
+
+        [Fact]
+        public async Task Error_Update_Product_No_Found()
+        {
+            var invalidId = Guid.NewGuid();
+
+            var request = RequestUpdateProductJsonBuilder.Build(invalidId);
+
+            var response = await _httpClient.PutAsJsonAsync("/api/product", request);
+
+            response.StatusCode.Should().NotBe(System.Net.HttpStatusCode.OK);
+
+            var responseBody = await response.Content.ReadAsStringAsync();
+
+            responseBody.Should().Contain(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), invalidId));
         }
     }
 }
