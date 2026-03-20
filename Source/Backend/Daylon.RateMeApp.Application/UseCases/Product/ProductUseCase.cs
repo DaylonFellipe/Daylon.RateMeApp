@@ -35,7 +35,7 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
             };
 
             // Save
-            await _productRepository.CreateProductAsync(product);
+            await _productRepository.CreateProduct(product);
 
             return product;
         }
@@ -44,7 +44,7 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
         public async Task<Domain.Entity.Product> ExecuteUpdateProductAsync(RequestUpdateProductJson request)
         {
             // Get existing product
-            var product = await _productRepository.GetProductByIdAsync(request.Id) ??
+            var product = await _productRepository.GetProductById(request.Id) ??
                 throw new KeyNotFoundException(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND));
 
             // Validate
@@ -66,7 +66,7 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
             if (!string.IsNullOrWhiteSpace(request.SupplierPersonalizedName)) product.SupplierPersonalizedName = request.SupplierPersonalizedName;
 
             // Save
-            await _productRepository.UpdateProductAsync(product);
+            await _productRepository.UpdateProduct(product);
 
             return product;
         }

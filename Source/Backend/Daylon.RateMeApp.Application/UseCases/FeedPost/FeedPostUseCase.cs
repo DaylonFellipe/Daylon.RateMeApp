@@ -23,7 +23,7 @@ namespace Daylon.RateMeApp.Application.UseCases.FeedPost
             if (!await _productRepository.ExisteProductAsync(request.ProductId))
                 throw new RateMeAppException(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), request.ProductId));
 
-            var product = await _productRepository.GetProductByIdAsync(request.ProductId);
+            var product = await _productRepository.GetProductById(request.ProductId);
 
             // Map
             var feedPost = new Domain.Entities.FeedPost
@@ -53,7 +53,7 @@ namespace Daylon.RateMeApp.Application.UseCases.FeedPost
 
             if (request.ProductId.HasValue)
             {
-                var product = await _productRepository.GetProductByIdAsync(request.ProductId.Value);
+                var product = await _productRepository.GetProductById(request.ProductId.Value);
                 feedPost.Product = product!;
             }
 

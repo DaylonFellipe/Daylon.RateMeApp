@@ -5,17 +5,17 @@ namespace Daylon.RateMeApp.Domain.Interfaces.Repositories
     public interface IProductRepository
     {
         // Get
-        Task<IEnumerable<Product>> GetAllProductsAsync();
-        Task<Product?> GetProductByIdAsync(Guid id);
+        Task<IEnumerable<Product>> GetAllProducts();
+        Task<Product?> GetProductById(Guid id);
         Task<bool> ExisteProductAsync(Guid id);
 
         // Post
-        Task CreateProductAsync(Product product);
+        Task CreateProduct(Product product);
 
         // Put
-        Task UpdateProductAsync(Product product);
+        Task UpdateProduct(Product product);
 
         // Delete
-        Task<bool> DeleteProductAsync(Guid id);
+        Task<bool> DeleteProduct(Guid id);
     }
 }

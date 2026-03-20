@@ -1,6 +1,5 @@
 ﻿using CommonTestUtilities.Requests.Product;
 using Daylon.RateMeApp.Application.UseCases.Product.Validators;
-using Daylon.RateMeApp.Communication.Requests.Product;
 using Daylon.RateMeApp.Domain.Entity.Enum;
 using Daylon.RateMeApp.Exceptions;
 using FluentAssertions;
