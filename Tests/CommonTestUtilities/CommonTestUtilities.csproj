@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Source\Shared\Daylon.RateMeApp.Communication\Daylon.RateMeApp.Communication.csproj" />
+    <ProjectReference Include="..\..\Source\Shared\Daylon.RateMeApp.Exceptions\Daylon.RateMeApp.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>
