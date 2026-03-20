@@ -15,14 +15,14 @@ namespace Daylon.RateMeApp.Application.Services.Products
         // Get
         public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            var products = await _productRepository.GetAllProducts();
+            var products = await _productRepository.GetAllProductsAsync();
 
             return products;
         }
 
         public async Task<Product> GetProductByIdAsync(Guid id)
         {
-            var product = await _productRepository.GetProductById(id);
+            var product = await _productRepository.GetProductByIdAsync(id);
             return product!;
         }
 
@@ -49,7 +49,7 @@ namespace Daylon.RateMeApp.Application.Services.Products
         // Delete
         public async Task<bool> DeleteProductAsync(Guid id)
         {
-            var result = await _productRepository.DeleteProduct(id);
+            var result = await _productRepository.DeleteProductAsync(id);
 
             return result;
         }
