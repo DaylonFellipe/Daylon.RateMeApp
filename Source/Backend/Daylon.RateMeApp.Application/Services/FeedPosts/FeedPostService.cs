@@ -31,7 +31,7 @@ namespace Daylon.RateMeApp.Application.Services.FeedPosts
         // Post
         public async Task<FeedPostDTO> CreatePostAsync(RequestCreateFeedPostJson request)
         {
-            var post = await _useCase.CreatePostAsync(request);
+            var post = await _useCase.ExecuteCreatePostAsync(request);
 
             var postDTO = FeedPostToDTO(post);
 

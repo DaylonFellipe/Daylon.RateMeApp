@@ -6,7 +6,7 @@ namespace Daylon.RateMeApp.Application.Interfaces.FeedPosts
     public interface IFeedPostUseCase
     {
         // Post
-        Task<FeedPost> CreatePostAsync(RequestCreateFeedPostJson request);
+        Task<FeedPost> ExecuteCreatePostAsync(RequestCreateFeedPostJson request);
 
         // Put
         Task<FeedPost> UpdatePostAsync(RequestUpdateFeedPostJson request);
