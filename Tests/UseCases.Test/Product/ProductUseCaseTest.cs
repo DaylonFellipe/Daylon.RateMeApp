@@ -1,9 +1,5 @@
-﻿using CommonTestUtilities.Repositories.Product;
-using CommonTestUtilities.Requests.Product;
-using Daylon.RateMeApp.Application.UseCases.Product;
+﻿using CommonTestUtilities.Requests.Product;
 using FluentAssertions;
-using Microsoft.Extensions.Configuration;
-using System.Net.Http;
 using UseCases.Test.Helpers;
 
 // The request properties are tested in Validator.Test - empty fields, invalid requests...

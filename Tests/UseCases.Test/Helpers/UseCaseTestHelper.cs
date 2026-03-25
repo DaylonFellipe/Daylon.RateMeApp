@@ -4,6 +4,8 @@ using Daylon.RateMeApp.Application.UseCases.FeedPost;
 using Daylon.RateMeApp.Application.UseCases.Product;
 using Microsoft.Extensions.Configuration;
 
+// The request properties are tested in Validator.Test - empty fields, invalid requests...
+
 namespace UseCases.Test.Helpers
 {
     public class UseCaseTestHelper

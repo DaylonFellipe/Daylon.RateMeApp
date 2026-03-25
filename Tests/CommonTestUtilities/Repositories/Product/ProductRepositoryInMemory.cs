@@ -17,8 +17,10 @@ namespace CommonTestUtilities.Repositories.Product
 
         public Task<Daylon.RateMeApp.Domain.Entity.Product?> GetProductByIdAsync(Guid id)
         {
-            var product = _products.FirstOrDefault(p => p.Id == id);
-            return Task.FromResult(product);
+            var product = _products.FirstOrDefault(p => p.Id == id)
+                ?? throw new RateMeAppException(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), id));
+
+            return Task.FromResult(product)!;
         }
 
         public async Task<bool> ExisteProductAsync(Guid id)
