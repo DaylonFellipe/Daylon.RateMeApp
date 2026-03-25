@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Daylon.RateMeApp.Domain.Entity.Enum
+namespace Daylon.RateMeApp.Domain.Entities.Enum
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
 

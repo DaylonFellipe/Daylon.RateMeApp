@@ -1,9 +1,10 @@
 ﻿using CommonTestUtilities.Requests.FeedPost;
 using CommonTestUtilities.Requests.Product;
+using Daylon.RateMeApp.Application.UseCases.FeedPost;
+using Daylon.RateMeApp.Communication.Requests.FeedPost;
 using Daylon.RateMeApp.Exceptions;
 using Daylon.RateMeApp.Exceptions.ExceptionBases;
 using FluentAssertions;
-using System;
 using UseCases.Test.Helpers;
 
 namespace UseCases.Test.FeedPost
@@ -15,17 +16,7 @@ namespace UseCases.Test.FeedPost
         [Fact]
         public async Task Success_Create()
         {
-            // Create Product
-            var productRequest = RequestCreateProductJsonBuilder.Build();
-            var productUseCase = Helper.ProductCreateUseCase();
-
-            var productResult = await productUseCase.ExecuteCreateProductAsync(productRequest);
-
-            // Create Post
-            var postRequest = RequestCreateFeedPostJsonBuilder.Build(productResult.Id);
-            var postUseCase = Helper.FeedPostCreateUseCase();
-
-            var postResult = await postUseCase.ExecuteCreatePostAsync(postRequest);
+            var (productResult, postResult, _, postRequest) = await CreateProductAndFeedPostAsync();
 
             postResult.Should().NotBeNull();
             postResult.Product.Should().Be(productResult);
@@ -46,7 +37,6 @@ namespace UseCases.Test.FeedPost
             catch (RateMeAppException ex)
             { exception = ex; }
 
-
             exception.Should().NotBeNull();
             exception!.Message.Should().Be(string.Format(ResourceMessagesException.PRODUCT_ID_NO_FOUND, request.ProductId));
         }
@@ -54,42 +44,22 @@ namespace UseCases.Test.FeedPost
         [Fact]
         public async Task Success_Update()
         {
-            // Create Product
-            var productRequest = RequestCreateProductJsonBuilder.Build();
-            var productUseCase = Helper.ProductCreateUseCase();
-
-            var productResult = await productUseCase.ExecuteCreateProductAsync(productRequest);
-
-            // Create Post
-            var postRequest = RequestCreateFeedPostJsonBuilder.Build(productResult.Id);
-            var postUseCase = Helper.FeedPostCreateUseCase();
-
-            var postCreated = await postUseCase.ExecuteCreatePostAsync(postRequest);
+            var (_, postResult, useCase, _) = await CreateProductAndFeedPostAsync();
 
             // Update Post
-            var postUpdateRequest = RequestUpdateFeedPostJsonBuilder.Build(postCreated.Id);
-            var postUpdatedResult = await postUseCase.UpdatePostAsync(postUpdateRequest);
+            var postUpdateRequest = RequestUpdateFeedPostJsonBuilder.Build(postResult.Id);
+            var postUpdatedResult = await useCase.UpdatePostAsync(postUpdateRequest);
 
             postUpdatedResult.Should().NotBeNull();
-            postUpdatedResult.Id.Should().Be(postCreated.Id);
-            postUpdatedResult.Product.Should().Be(postCreated.Product);
-            postUpdatedResult.IsFavorite.Should().Be(postCreated.IsFavorite);
+            postUpdatedResult.Id.Should().Be(postResult.Id);
+            postUpdatedResult.Product.Should().Be(postResult.Product);
+            postUpdatedResult.IsFavorite.Should().Be(postResult.IsFavorite);
         }
 
         [Fact]
         public async Task Error_Update_Post_Id_No_Found()
         {
-            // Create Product
-            var productRequest = RequestCreateProductJsonBuilder.Build();
-            var productUseCase = Helper.ProductCreateUseCase();
-
-            var productResult = await productUseCase.ExecuteCreateProductAsync(productRequest);
-
-            // Create Post
-            var postRequest = RequestCreateFeedPostJsonBuilder.Build(productResult.Id);
-            var postUseCase = Helper.FeedPostCreateUseCase();
-
-            var postCreated = await postUseCase.ExecuteCreatePostAsync(postRequest);
+            var (_, _, useCase, _) = await CreateProductAndFeedPostAsync();
 
             // Update Post
             var invalidPostId = Guid.NewGuid();
@@ -99,7 +69,7 @@ namespace UseCases.Test.FeedPost
             RateMeAppException? exception = null;
 
             try
-            {  await postUseCase.UpdatePostAsync(postUpdateRequest); }
+            { await useCase.UpdatePostAsync(postUpdateRequest); }
 
             catch (RateMeAppException ex)
             { exception = ex; }
@@ -112,6 +82,33 @@ namespace UseCases.Test.FeedPost
         [Fact]
         public async Task Error_Update_Product_Id_No_Found()
         {
+            var(_, postResult, useCase, _) = await CreateProductAndFeedPostAsync();
+
+            // Update Post
+            var invalidProductId = Guid.NewGuid();
+
+            var postUpdateRequest = RequestUpdateFeedPostJsonBuilder.Build(postResult.Id, invalidProductId, false);
+
+            RateMeAppException? exception = null;
+
+            try
+            { var teste = await useCase.UpdatePostAsync(postUpdateRequest); }
+
+            catch (RateMeAppException ex)
+            { exception = ex; }
+
+            exception.Should().NotBeNull();
+            exception.Message.Should().Be(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), invalidProductId));
+        }
+
+        // Auxiliary Methods
+        private async Task<(
+            Daylon.RateMeApp.Domain.Entities.Product product,
+            Daylon.RateMeApp.Domain.Entities.FeedPost post,
+            FeedPostUseCase useCase,
+            RequestCreateFeedPostJson requestPost
+            )> CreateProductAndFeedPostAsync()
+        {
             // Create Product
             var productRequest = RequestCreateProductJsonBuilder.Build();
             var productUseCase = Helper.ProductCreateUseCase();
@@ -124,21 +121,7 @@ namespace UseCases.Test.FeedPost
 
             var postCreated = await postUseCase.ExecuteCreatePostAsync(postRequest);
 
-            // Update Post
-            var invalidProductId = Guid.NewGuid();
-
-            var postUpdateRequest = RequestUpdateFeedPostJsonBuilder.Build(postCreated.Id, invalidProductId, false);
-
-            RateMeAppException? exception = null;
-
-            try
-            {  var teste = await postUseCase.UpdatePostAsync(postUpdateRequest); }
-
-            catch (RateMeAppException ex)
-            { exception = ex; }
-
-            exception.Should().NotBeNull();
-            exception.Message.Should().Be(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), invalidProductId));
+            return (productResult, postCreated!, postUseCase, postRequest);
         }
     }
 }

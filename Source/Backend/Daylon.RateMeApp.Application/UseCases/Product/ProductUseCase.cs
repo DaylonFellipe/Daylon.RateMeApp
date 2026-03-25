@@ -2,7 +2,7 @@
 using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Application.UseCases.Product.Validators;
 using Daylon.RateMeApp.Communication.Requests.Product;
-using Daylon.RateMeApp.Domain.Entity.Enum;
+using Daylon.RateMeApp.Domain.Entities.Enum;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
 using Daylon.RateMeApp.Exceptions;
 
@@ -14,13 +14,13 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
         private readonly ApplicationHelper Helper = new();
 
         // Post
-        public async Task<Domain.Entity.Product> ExecuteCreateProductAsync(RequestCreateProductJson request)
+        public async Task<Domain.Entities.Product> ExecuteCreateProductAsync(RequestCreateProductJson request)
         {
             // Validate
             await Helper.ValidateRequestAsync(request, new CreateProductValidator());
 
             // Map
-            var product = new Domain.Entity.Product
+            var product = new Domain.Entities.Product
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
@@ -41,7 +41,7 @@ namespace Daylon.RateMeApp.Application.UseCases.Product
         }
 
         // Put
-        public async Task<Domain.Entity.Product> ExecuteUpdateProductAsync(RequestUpdateProductJson request)
+        public async Task<Domain.Entities.Product> ExecuteUpdateProductAsync(RequestUpdateProductJson request)
         {
             // Get existing product
             var product = await _productRepository.GetProductByIdAsync(request.Id) ??

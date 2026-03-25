@@ -6,16 +6,16 @@ namespace CommonTestUtilities.Repositories.Product
 {
     public class ProductRepositoryInMemory : IProductRepository
     {
-        private readonly List<Daylon.RateMeApp.Domain.Entity.Product> _products = [];
+        private readonly List<Daylon.RateMeApp.Domain.Entities.Product> _products = [];
 
         // Get
-        public Task<IEnumerable<Daylon.RateMeApp.Domain.Entity.Product>> GetAllProductsAsync()
+        public Task<IEnumerable<Daylon.RateMeApp.Domain.Entities.Product>> GetAllProductsAsync()
         {
             var products = _products.AsEnumerable();
             return Task.FromResult(products);
         }
 
-        public Task<Daylon.RateMeApp.Domain.Entity.Product?> GetProductByIdAsync(Guid id)
+        public Task<Daylon.RateMeApp.Domain.Entities.Product?> GetProductByIdAsync(Guid id)
         {
             var product = _products.FirstOrDefault(p => p.Id == id)
                 ?? throw new RateMeAppException(string.Format((ResourceMessagesException.PRODUCT_ID_NO_FOUND), id));
@@ -36,14 +36,14 @@ namespace CommonTestUtilities.Repositories.Product
         }
 
         // Post
-        public Task CreateProductAsync(Daylon.RateMeApp.Domain.Entity.Product product)
+        public Task CreateProductAsync(Daylon.RateMeApp.Domain.Entities.Product product)
         {
             _products.Add(product);
             return Task.CompletedTask;
         }
 
         // Put
-        public Task UpdateProductAsync(Daylon.RateMeApp.Domain.Entity.Product product)
+        public Task UpdateProductAsync(Daylon.RateMeApp.Domain.Entities.Product product)
         {
             var existingProduct = GetProductByIdAsync(product.Id).Result;
 

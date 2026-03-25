@@ -1,4 +1,4 @@
-﻿using Daylon.RateMeApp.Domain.Entity;
+﻿using Daylon.RateMeApp.Domain.Entities;
 
 namespace Daylon.RateMeApp.Domain.Entities
 {
