@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="FeedPost\Post\" />
     <Folder Include="FeedPost\Put\" />
   </ItemGroup>
 
