@@ -29,4 +29,10 @@
     <ProjectReference Include="..\CommonTestUtilities\CommonTestUtilities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FeedPost\Delete\" />
+    <Folder Include="FeedPost\Post\" />
+    <Folder Include="FeedPost\Put\" />
+  </ItemGroup>
+
 </Project>
