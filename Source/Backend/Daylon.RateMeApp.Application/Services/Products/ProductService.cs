@@ -1,8 +1,8 @@
 ﻿using Daylon.RateMeApp.Application.DTOs.Product;
 using Daylon.RateMeApp.Application.Interfaces.Products;
 using Daylon.RateMeApp.Communication.Requests.Product;
-using Daylon.RateMeApp.Domain.Entity;
-using Daylon.RateMeApp.Domain.Entity.Enum;
+using Daylon.RateMeApp.Domain.Entities;
+using Daylon.RateMeApp.Domain.Entities.Enum;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
 
 namespace Daylon.RateMeApp.Application.Services.Products

@@ -1,4 +1,4 @@
-﻿using Daylon.RateMeApp.Domain.Entity.Enum;
+﻿using Daylon.RateMeApp.Domain.Entities.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace Daylon.RateMeApp.Communication.Requests.Product

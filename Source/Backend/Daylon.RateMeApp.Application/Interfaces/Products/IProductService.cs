@@ -1,6 +1,6 @@
 ﻿using Daylon.RateMeApp.Application.DTOs.Product;
 using Daylon.RateMeApp.Communication.Requests.Product;
-using Daylon.RateMeApp.Domain.Entity;
+using Daylon.RateMeApp.Domain.Entities;
 
 namespace Daylon.RateMeApp.Application.Interfaces.Products
 {

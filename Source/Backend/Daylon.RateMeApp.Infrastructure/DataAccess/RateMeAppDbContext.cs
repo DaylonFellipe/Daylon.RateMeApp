@@ -1,5 +1,5 @@
 ﻿using Daylon.RateMeApp.Domain.Entities;
-using Daylon.RateMeApp.Domain.Entity;
+using Daylon.RateMeApp.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Daylon.RateMeApp.Infrastructure.DataAccess

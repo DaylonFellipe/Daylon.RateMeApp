@@ -1,4 +1,4 @@
-﻿using Daylon.RateMeApp.Domain.Entity;
+﻿using Daylon.RateMeApp.Domain.Entities;
 using Daylon.RateMeApp.Domain.Interfaces.Repositories;
 using Daylon.RateMeApp.Exceptions;
 using Daylon.RateMeApp.Exceptions.ExceptionBases;

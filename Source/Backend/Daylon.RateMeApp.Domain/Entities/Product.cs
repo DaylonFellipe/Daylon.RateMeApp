@@ -1,7 +1,8 @@
-﻿using Daylon.RateMeApp.Domain.Entity.Enum;
+﻿using Daylon.RateMeApp.Domain.Entities.Enum;
 using System.ComponentModel.DataAnnotations;
 
-namespace Daylon.RateMeApp.Domain.Entity
+namespace Daylon.RateMeApp.Domain.Entities
+
 {
     public class Product
     {

@@ -1,6 +1,6 @@
 ﻿using Bogus;
 using Daylon.RateMeApp.Communication.Requests.Product;
-using Daylon.RateMeApp.Domain.Entity.Enum;
+using Daylon.RateMeApp.Domain.Entities.Enum;
 
 namespace CommonTestUtilities.Requests.Product
 {

@@ -1,4 +1,4 @@
-﻿using Daylon.RateMeApp.Domain.Entity.Enum;
+﻿using Daylon.RateMeApp.Domain.Entities.Enum;
 
 namespace Daylon.RateMeApp.Domain.Mappings
 {
